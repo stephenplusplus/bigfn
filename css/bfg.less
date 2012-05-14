@@ -90,3 +90,35 @@ td { vertical-align: top; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
+
+.londrina () { font-family:'Londrina Sketch', cursive; }
+
+.border-radius (@radius: 5px) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #444) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+.rotate (@degrees: 2deg) {
+  transform:rotate(@degrees);
+  -ms-transform:rotate(@degrees);
+  -moz-transform:(@degrees);
+  -webkit-transform:rotate(@degrees);
+  -o-transform:(@degrees);
+}
+
+body { margin:3px; }
+
+body > header { .londrina(); text-align:center; }
+  body > header h1, body > header h2, body > header h3 { margin:0; padding:0; }
+  body > header hgroup { font-size:1.2em; }
+    body > header h1 { display:inline-block; font-size:7em; color:#4bd8cd; .rotate(-3deg); }
+    body > header h2 { display:inline-block; font-size:9em; color:#fe57a1; .rotate(7deg); }
+    body > header h3 { margin-top:-1em; font-size:5.5em; color:#8c66c5; .rotate(-2deg); }
+  
