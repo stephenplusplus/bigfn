@@ -6,8 +6,8 @@ audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-html, button, input, select, textarea { font-family: sans-serif; color: #222; }
-body { margin: 0; font-size: 1em; line-height: 1.4; }
+html, button, input, select, textarea { font-family: sans-serif; color: #444; }
+body { margin:0; font-size:62.5%; line-height:1.4; }
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
@@ -91,6 +91,13 @@ td { vertical-align: top; }
   h2, h3 { page-break-after: avoid; }
 }
 
+@lime: #C3ff94;
+@teal: #2cb2b8;
+@purp: #954ada;
+@pink: #ff94f6;
+@yella: #f6ff94;
+@sky: #c3d6ff;
+
 .londrina () { font-family:'Londrina Sketch', cursive; }
 
 .border-radius (@radius: 5px) {
@@ -105,7 +112,7 @@ td { vertical-align: top; }
   -webkit-box-shadow: @arguments;
 }
 
-.rotate (@degrees: 2deg) {
+.rotate (@degrees: -2deg) {
   transform:rotate(@degrees);
   -ms-transform:rotate(@degrees);
   -moz-transform:(@degrees);
@@ -113,10 +120,9 @@ td { vertical-align: top; }
   -o-transform:(@degrees);
 }
 
-body > header { .londrina(); text-align:center; }
-  body > header h1, body > header h2, body > header h3 { margin:0; padding:0; }
-  body > header hgroup { font-size:1.2em; }
-    body > header h1 { display:inline-block; font-size:7em; color:#4bd8cd; .rotate(-3deg); }
-    body > header h2 { display:inline-block; font-size:9em; color:#fe57a1; .rotate(7deg); }
-    body > header h3 { width:99%; margin-top:-1em; font-size:5.5em; color:#8c66c5; .rotate(-2deg); }
-  
+  body > header { .londrina(); width:980px; margin:auto; }
+    body > header hgroup { word-spacing:-.3em; .rotate(); margin-top:1.5em; }
+      body > header hgroup h1, body > header hgroup h2, body > header hgroup h3 { display:inline; padding:.1em; }
+        body > header hgroup h1 { color:@sky; background-color:@purp; font-size:6.9em; padding-top:1em; }
+        body > header hgroup h2 { color:@purp; background-color:@yella; font-size:7.3em; padding-bottom:.16em; }
+        body > header hgroup h3 { color:#fff; background-color:@teal; font-size:5.3em; padding-right:3em; }
