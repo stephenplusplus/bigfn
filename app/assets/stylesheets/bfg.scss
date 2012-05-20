@@ -121,7 +121,7 @@ td { vertical-align: top; }
   $yella: #f6ff94;
   $sky: #c3d6ff;
 
-  body { background-image:url('bg.png'); cursor:default; }
+  body { background-image:url('bg.png'); cursor:default; overflow:hidden; }
 
   header, hgroup, h1, h2, h3, body > header > p { @include transition(all 277ms ease-in-out); }
 
@@ -187,8 +187,8 @@ td { vertical-align: top; }
     }
       li button {
         display:block;
+        width:100%;
         text-align:center;
-        margin:auto;
         outline:0;
         padding:0;
         border:0;
