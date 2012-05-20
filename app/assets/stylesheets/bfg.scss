@@ -141,12 +141,15 @@ td { vertical-align: top; }
         @include box-shadow(-9px -11px lighten($yella, 15%));
         @include box-shadow(9px 11px 1px lighten($sky, 7%));
       }
-      h1 { color:$sky; background-color:$purp; font-size:6.9em; padding-top:1em; }
-        h1:hover { color:#fff; @include box-shadow(9px 11px 1px lighten($teal, 11%)); }
-      h2 { color:$purp; background-color:saturate($yella, 77%); font-size:7.3em; padding-bottom:.36em; }
-        h2:hover { color:$teal; @include box-shadow(9px 11px 1px lighten($pink, 11%)); }
-      h3 { color:#fff; background-color:lighten($teal, 17%); font-size:5.3em; padding-right:30%; }
-        h3:hover { color:lighten($pink, 13%); @include box-shadow(9px 11px 1px lighten($yella, 11%)); }
+      h1 { color:#fff; background-color:$purp; font-size:6.9em; padding-top:1em; @include box-shadow(9px 11px 1px lighten($teal, 11%)); }
+        h1:hover, h2:hover, h3:hover {
+          @include box-shadow(9px 11px 1px lighten($sky, 7%));  
+        }
+        h1:hover { color:$sky; }
+      h2 { color:$teal; background-color:saturate($yella, 77%); font-size:7.3em; padding-bottom:.36em; @include box-shadow(9px 11px 1px lighten($pink, 11%)); }
+        h2:hover { color:$purp; }
+      h3 { color:lighten($pink, 13%); background-color:lighten($teal, 17%); font-size:5.3em; padding-right:30%; @include box-shadow(9px 11px 1px lighten($yella, 11%)); }
+        h3:hover { color:#fff; }
     }
     p {
       position:absolute;
@@ -192,12 +195,12 @@ td { vertical-align: top; }
         background:transparent;
         @include outline;
         @include text-shadow(0.02em 0.02em 0.15em $teal);
-        font-size:4.5em;
+        font-size:6.5em;
         color:#999;
       }
       li button:first-child {
         color:#222;
-        font-size:5em;
+        font-size:7em;
         @include text-shadow(0.02em 0.02em 0.15em $purp);
       }
         li button:hover {
