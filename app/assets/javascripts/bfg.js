@@ -3,8 +3,7 @@
 
   ~ ( function ( $ ) {
 
-    $(document).ready( function ( ) {
-
+    var resetSpace = function ( ) {
       var
         orientationChange = 'onorientationchange' in window,
         orientationEvent = orientationChange ? 'orientationchange' : 'resize',
@@ -16,13 +15,19 @@
           return o === 90 || o === -90 ? 150 : 320;
         }
       ;
-
+      
       $(content).css({ 'height' : document.height - space, 'padding-top' : ( document.height - space ) >> 2 });
-
+      
       window.addEventListener(orientationEvent, function ( ) {
         if ( orientationChange ) space = getSpace( window.orientation );
         $(content).css({ 'height' : document.height - space, 'padding-top' : ( document.height - space ) >> 2 });
       });
+
+    };
+
+    $(document).ready( function ( ) {
+
+      resetSpace();
 
     });
 
