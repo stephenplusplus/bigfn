@@ -5,8 +5,6 @@
 
     $(document).ready( function ( ) {
 
-      //$('figcaption').on('click', function ( ) {  });
-
       var
         orientationChange = 'onorientationchange' in window,
         orientationEvent = orientationChange ? 'orientationchange' : 'resize',
