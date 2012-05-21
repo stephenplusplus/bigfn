@@ -355,7 +355,6 @@ td { vertical-align: top; }
   .portrait {  }
   
   @media all and ( max-height: 200px ) {
-    body { background-image:none; }
     body > header {
       margin-bottom:5.5em;
       p {
