@@ -12,7 +12,8 @@ gem 'sass-rails', '~> 3.2.3'
 gem 'uglifier', '>= 1.0.3'
 gem 'compass-rails'
 gem 'jquery-rails'
-gem "execjs", :git => "git://github.com/eckz/execjs.git", :branch => "directory-nodejs-in-pwd"
+gem 'execjs'
+gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
