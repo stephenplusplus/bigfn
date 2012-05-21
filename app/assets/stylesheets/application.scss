@@ -120,6 +120,38 @@ td { vertical-align: top; }
   $pink: #ff94f6;
   $yella: #f6ff94;
   $sky: #c3d6ff;
+  
+  @mixin animation ( $params ) {
+    -webkit-animation:$params;
+    -moz-animation:$params;
+    animation:$params;
+  }
+  
+  @-webkit-keyframes header {
+  	27% { @include box-shadow(9px 11px 1px lighten($teal, 41%)); }
+  	77% { @include box-shadow(9px 11px 1px lighten($sky, 11%)); }
+  }
+  @-moz-keyframes header {
+  	27% { @include box-shadow(9px 11px 1px lighten($teal, 41%)); }
+  	77% { @include box-shadow(9px 11px 1px lighten($sky, 11%)); }
+  }
+  @keyframes header {
+  	27% { @include box-shadow(9px 11px 1px lighten($teal, 41%)); }
+  	77% { @include box-shadow(9px 11px 1px lighten($sky, 11%)); }
+  }
+  
+  @-webkit-keyframes in-a-band {
+  	27% { @include text-shadow(1px 0px 4px darken($purp, 7%)); }
+  	57% { @include text-shadow(-1px 1px 4px darken($sky, 13%)); }
+  }
+  @-moz-keyframes in-a-band {
+  	27% { @include text-shadow(1px 0px 4px darken($purp, 7%)); }
+  	57% { @include text-shadow(-1px 1px 4px darken($sky, 13%)); }
+  }
+  @keyframes in-a-band {
+  	27% { @include text-shadow(1px 0px 4px darken($purp, 7%)); }
+  	57% { @include text-shadow(-1px 1px 4px darken($sky, 13%)); }
+  }
 
   body { background-image:url('bg.png'); cursor:default; overflow:hidden; }
 
@@ -141,14 +173,20 @@ td { vertical-align: top; }
         @include box-shadow(-9px -11px lighten($yella, 15%));
         @include box-shadow(9px 11px 1px lighten($sky, 7%));
       }
-      h1 { color:#fff; background-color:$purp; font-size:6.9em; padding-top:1em; @include box-shadow(9px 11px 1px lighten($teal, 11%)); }
+      h1 { @include animation(header 1277ms 500ms 2);
+        color:#fff; background-color:$purp; font-size:6.9em; padding-top:1em; @include box-shadow(9px 11px 1px lighten($teal, 11%)); 
+      }
         h1:hover, h2:hover, h3:hover {
-          @include box-shadow(9px 11px 1px lighten($sky, 7%));  
+          @include box-shadow(9px 11px 1px lighten($sky, 7%));
         }
         h1:hover { color:$sky; }
-      h2 { color:$teal; background-color:saturate($yella, 77%); font-size:7.3em; padding-bottom:.36em; @include box-shadow(9px 11px 1px lighten($pink, 11%)); }
+      h2 { @include animation(header 977ms 750ms 2);
+        color:$teal; background-color:saturate($yella, 77%); font-size:7.3em; padding-bottom:.36em; @include box-shadow(9px 11px 1px lighten($pink, 11%)); 
+      }
         h2:hover { color:$purp; }
-      h3 { color:lighten($pink, 13%); background-color:lighten($teal, 17%); font-size:5.3em; padding-right:30%; @include box-shadow(9px 11px 1px lighten($yella, 11%)); }
+      h3 { @include animation(header 777ms 1000ms 2);
+        color:lighten($pink, 13%); background-color:lighten($teal, 17%); font-size:5.3em; padding-right:30%; @include box-shadow(9px 11px 1px lighten($yella, 11%)); 
+      }
         h3:hover { color:#fff; }
     }
     p {
@@ -169,8 +207,10 @@ td { vertical-align: top; }
     a {
       color:darken($purp, 31%);
       font-size:1.9em;
+      text-decoration:none;
       &:hover {
-        color:$teal;
+        color:darken($purp, 31%);
+        @include animation(in-a-band 833ms 1);
       }
     }
   }
