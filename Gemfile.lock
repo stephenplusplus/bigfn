@@ -111,6 +111,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  compass
   compass-rails
   execjs
   html5-boilerplate (~> 2.1.0)
