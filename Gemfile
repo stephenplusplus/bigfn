@@ -7,19 +7,12 @@ gem 'rails', '3.2.3'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails', '~> 3.2.3'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'compass-rails'
-end
 
-group :production do
-  gem 'sass-rails', '~> 3.2.3'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'compass-rails'
-end
-
+gem 'sass-rails', '~> 3.2.3'
+gem 'uglifier', '>= 1.0.3'
+gem 'compass-rails'
 gem 'jquery-rails'
+gem "execjs", :git => "git://github.com/eckz/execjs.git", :branch => "directory-nodejs-in-pwd"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
