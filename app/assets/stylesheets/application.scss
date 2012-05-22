@@ -120,6 +120,8 @@ td { vertical-align: top; }
   $pink: #ff94f6;
   $yella: #f6ff94;
   $sky: #c3d6ff;
+  $bg: #e8feff;
+  $coral: #f16565;
   
   @mixin animation ( $params ) {
     -webkit-animation:$params;
@@ -153,11 +155,25 @@ td { vertical-align: top; }
   	57% { @include text-shadow(-1px 1px 4px darken($sky, 13%)); }
   }
 
-  body { background-image:url('bg.png'); cursor:default; overflow:hidden; }
+  body { 
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    @include background-image(
+      /* radial-gradient(center center, color-stops( lighten($sky, 33%) 11%, lighten($sky, 21%) 31%, $sky 91%) ), */
+      image-url('bg.png')
+    );
+    cursor:default;
+    overflow:hidden;
+  }
 
   header, hgroup, h1, h2, h3, body > header > p { @include transition(all 277ms ease-in-out); }
 
-  body > header { 
+  body > header {
+    position:relative;
+    z-index:2;
     @include chau;
     @include opacity(0.87);
     hgroup {
@@ -215,6 +231,7 @@ td { vertical-align: top; }
   }
   
   body > div {
+    z-index:1;
     ul {
       position:absolute;
       top:0;
@@ -263,65 +280,67 @@ td { vertical-align: top; }
             color:darken($teal, 15%);
           }
   }
-  
-  .comp {
-    position:absolute;
-    width:100%;
-    border-top:4em solid lighten($teal, 37%);
-    padding-top:7em;
-    background-color:lighten($teal, 49%);
-    bottom:0;
-    ul {
-      width:100%;
+
+  footer {
+    .comp {
       position:absolute;
+      width:100%;
+      padding-top:4em;
+      background:lighten($teal, 25%);
+      @include opacity(.91);
+      border-top:7em solid lighten($teal, 37%);
       bottom:0;
-    }
-      li {
+      ul {
+        width:100%;
         position:absolute;
-        @include box-sizing('border-box');
-        padding:2em;
-        width:50%;
-        bottom:0;
+        bottom:4em;
+        border-bottom:2em solid lighten($teal, 31%);
       }
-      li.right {
-        right:0;
-      }
-        figcaption {
-          @include border-radius(0.1em);
-          @include marker(1);
-          @include opacity(.91);
-          background-color:#fff;
-          color:#222;
-          border-bottom:0.3em solid lighten($pink, 13%);
-          padding:0.8em;
-          font-size:2em;
-          cursor:pointer;
-          @include rotate(-2deg);
-          @include transition(all 203ms ease-in-out, background-color 97ms ease-in-out, margin-top 709ms ease-in, box-shadow 88ms ease-out);
+        li {
+          position:absolute;
+          @include box-sizing('border-box');
+          padding:2em;
+          width:50%;
+          bottom:0;
         }
-        li.right figcaption {
-          @include marker(2);
-          @include rotate(1deg);
-          text-align:right;
+        li.right {
+          right:0;
         }
-          figcaption:hover {
-            background-color:lighten($teal, 39%);
-            @include box-shadow(-0.5em -0.5em lighten($teal, 29%));
-            font-size:3em;
+          figcaption {
+            @include border-radius(0.1em);
+            @include marker(1);
+            background-color:#fff;
+            color:#222;
+            border-top:0.7em solid lighten($pink, 13%);
+            padding:0.8em;
+            font-size:2em;
+            cursor:pointer;
+            @include rotate(-2deg);
+            @include transition(all 203ms ease-in-out, background-color 97ms ease-in-out, margin-top 709ms ease-in, box-shadow 88ms ease-out);
           }
-          li.right figcaption:hover {
-            background-color:lighten($yella, 9%);
-            @include box-shadow(0.5em 0.5em lighten($purp, 29%)); 
+          li.right figcaption {
+            border-color:$sky;
+            @include marker(2);
+            @include rotate(1deg);
+            text-align:right;
           }
-          figcaption:active {
-            @include transform( rotate(4deg) );
-            @include transform-origin( left, top );
-            margin-top:10em;
-          }
-          li.right figcaption:active {
-            @include transform( rotate(-4deg) );
-            @include transform-origin( right, top );
-          }
+            figcaption:hover {
+              @include box-shadow(-0.5em 0.5em darken($sky, 6%));
+              font-size:3em;
+            }
+            li.right figcaption:hover {
+              @include box-shadow(0.5em 0.5em lighten($pink, 7%)); 
+            }
+            figcaption:active {
+              @include transform3d( rotate(-4deg) );
+              @include transform-origin( right, top );
+              margin-top:10em;
+            }
+            li.right figcaption:active {
+              @include transform3d( rotate(4deg) );
+              @include transform-origin( left, top );
+            }
+    }
   }
   
   @media all and ( max-width: 680px ) {
@@ -353,9 +372,12 @@ td { vertical-align: top; }
       }
     }
     .comp {
-      border-top:0;
-      figcaption { font-size:1.3em; }
-        figcaption:hover { font-size:1.9em; }
+      border-top-width:4em !important;
+      bottom:0 !important;
+      ul { bottom:2em !important; }
+        li { padding:1em !important; }
+        figcaption { font-size:1.3em !important; }
+          figcaption:hover { font-size:1.9em !important; }
     }
   }
   
@@ -366,15 +388,15 @@ td { vertical-align: top; }
       }
       hgroup {
         position:absolute;
-        top:-1em;
+        top:-1.3em;
         h1, h2, h3 {
           @include box-shadow(-2px -5px lighten($yella, 15%));
           @include box-shadow(2px 5px 1px lighten($sky, 7%));
           padding:0 0.3em;
         }
-        h1 { font-size:2.3em; background-color:saturate($yella, 77%); color:$purp; padding-left:0.7em; }
-        h2 { font-size:2.3em; background-color:lighten($teal, 17%); color:#fff; }
-        h3 { display:inline; font-size:2.3em; background-color:$purp; color:$sky; }
+        h1 { font-size:1.7em; background-color:saturate($yella, 77%); color:$purp; padding-left:0.7em; }
+        h2 { font-size:1.9em; background-color:lighten($teal, 17%); color:#fff; }
+        h3 { font-size:1.5em; background-color:$purp; color:$sky; padding-left:0.7em; }
       }
     }
     body > div {
@@ -389,8 +411,9 @@ td { vertical-align: top; }
       }
     }
     .comp {
-      padding-top:4em;
-      figcaption { font-size:0.8em; }
-        figcaption:hover { font-size:0.8em; }
+      padding-top:0em !important;
+      li { bottom:-4em !important; }
+        figcaption { font-size:1em !important; }
+          figcaption:hover { font-size:1.3em !important; }
     }
   }
