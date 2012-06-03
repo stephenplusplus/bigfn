@@ -1,348 +1,267 @@
-/* HTML5 Boilerplate  */
+	@import 'boilerplate';
 
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
-audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
-audio:not([controls]) { display: none; }
-[hidden] { display: none; }
+	@import 'compass';
 
-html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-html, button, input, select, textarea { font-family: sans-serif; color: #444; }
-body { margin:0; font-size:62.5%; line-height:1.4; }
+	@mixin lights { font-family: 'Codystar', cursive; }
+	@mixin chau { font-family: 'Chau Philomene One', sans-serif; }
+	@mixin sketch { font-family: 'Londrina Sketch', cursive; }
+	@mixin outline { font-family: 'Londrina Outline', cursive; }
+	@mixin eighties { font-family: 'Monofett', cursive; }
+	@mixin tiny { font-family: 'Dorsa', sans-serif; }
 
-::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
-::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+	@mixin marker ( $which ) {
+		@if $which == 1 {
+			font-family: 'Give You Glory', cursive;
+		} @else if $which == 2 {
+			font-family: 'Gochi Hand', cursive;
+		} @else if $which == 3 {
+			font-family: 'Shadows Into Light Two', cursive;
+		} @else if $which == 4 {
+			font-family: 'Days One', sans-serif;
+		}
+	}
 
-a { color: #00e; }
-a:visited { color: #551a8b; }
-a:hover { color: #06e; }
-a:focus { outline: thin dotted; }
-a:hover, a:active { outline: 0; }
-abbr[title] { border-bottom: 1px dotted; }
-b, strong { font-weight: bold; }
-blockquote { margin: 1em 40px; }
-dfn { font-style: italic; }
-hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
-ins { background: #ff9; color: #000; text-decoration: none; }
-mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
-pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
-pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+	$width: 89.34%;
 
-q { quotes: none; }
-q:before, q:after { content: ""; content: none; }
-small { font-size: 85%; }
-sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
-sup { top: -0.5em; }
-sub { bottom: -0.25em; }
+	$lime: #c3ff94;
+	$teal: #2cb2b8;
+	$purp: #954ada;
+	$pink: #ff94f6;
+	$yella: #f6ff94;
+	$sky: #c3d6ff;
+	$bg: #e8feff;
+	$coral: #f16565;
 
-ul, ol { list-style:none; margin:0; padding:0; }
-dd { margin: 0 0 0 40px; }
-nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+	@mixin animation ( $params ) {
+		-webkit-animation:$params;
+		-moz-animation:$params;
+		animation:$params;
+	}
 
-img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
-svg:not(:root) { overflow: hidden; }
-figure { margin: 0; }
+	@-webkit-keyframes header {
+		27% { @include box-shadow(9px 11px 1px lighten($teal, 41%)); }
+		77% { @include box-shadow(9px 11px 1px lighten($sky, 11%)); }
+	}
+	@-moz-keyframes header {
+		27% { @include box-shadow(9px 11px 1px lighten($teal, 41%)); }
+		77% { @include box-shadow(9px 11px 1px lighten($sky, 11%)); }
+	}
+	@keyframes header {
+		27% { @include box-shadow(9px 11px 1px lighten($teal, 41%)); }
+		77% { @include box-shadow(9px 11px 1px lighten($sky, 11%)); }
+	}
 
-form { margin: 0; }
-fieldset { border: 0; margin: 0; padding: 0; }
+	@-webkit-keyframes in-a-band {
+		27% { @include text-shadow(1px 0px 4px darken($purp, 7%)); }
+		57% { @include text-shadow(-1px 1px 4px darken($sky, 13%)); }
+	}
+	@-moz-keyframes in-a-band {
+		27% { @include text-shadow(1px 0px 4px darken($purp, 7%)); }
+		57% { @include text-shadow(-1px 1px 4px darken($sky, 13%)); }
+	}
+	@keyframes in-a-band {
+		27% { @include text-shadow(1px 0px 4px darken($purp, 7%)); }
+		57% { @include text-shadow(-1px 1px 4px darken($sky, 13%)); }
+	}
 
-label { cursor: pointer; }
-legend { border: 0; *margin-left: -7px; padding: 0; white-space: normal; }
-button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
-button, input { line-height: normal; }
-button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
-button[disabled], input[disabled] { cursor: default; }
-input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; *width: 13px; *height: 13px; }
-input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
-input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
-button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
-textarea { overflow: auto; vertical-align: top; resize: vertical; }
-input:valid, textarea:valid {  }
-input:invalid, textarea:invalid { background-color: #f0dddd; }
-
-table { border-collapse: collapse; border-spacing: 0; }
-td { vertical-align: top; }
-
-.chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
-
-@media only screen and (min-width: 35em) { }
-
-.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
-.ir br { display: none; }
-.hidden { display: none !important; visibility: hidden; }
-.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
-.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
-.invisible { visibility: hidden; }
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { *zoom: 1; }
-
-@media print {
-  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } 
-  a, a:visited { text-decoration: underline; }
-  a[href]:after { content: " (" attr(href) ")"; }
-  abbr[title]:after { content: " (" attr(title) ")"; }
-  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; } 
-  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
-  thead { display: table-header-group; } 
-  tr, img { page-break-inside: avoid; }
-  img { max-width: 100% !important; }
-  @page { margin: 0.5cm; }
-  p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3 { page-break-after: avoid; }
+body { 
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	@include background-image(
+		/* radial-gradient(center center, color-stops( lighten($sky, 33%) 11%, lighten($sky, 21%) 31%, $sky 91%) ), */
+		image-url('bg.png')
+	);
+	cursor:default;
+	overflow:hidden;
 }
 
-  @import 'compass';
+header, hgroup, h1, h2, h3, body > header > p { @include transition(all 277ms ease-in-out); }
 
-  @mixin lights { font-family: 'Codystar', cursive; }
-  @mixin chau { font-family: 'Chau Philomene One', sans-serif; }
-  @mixin sketch { font-family: 'Londrina Sketch', cursive; }
-  @mixin outline { font-family: 'Londrina Outline', cursive; }
-  @mixin eighties { font-family: 'Monofett', cursive; }
-  @mixin tiny { font-family: 'Dorsa', sans-serif; }
+body > header {
+	position:relative;
+	z-index:2;
+	@include chau;
+	@include opacity(0.87);
+	hgroup {
+		width:$width;
+		word-spacing:-0.3em;
+		margin:1.5em 0 0 -0.4em;
+		@include rotate(-2deg);
+		@media all and ( max-height: 200px ) {
+			position:absolute;
+			top:-1.3em;
+		}
+		h1, h2, h3 {
+			display:inline;
+			padding:0.2em;
+			@include border-radius(0.1em);
+			@include box-shadow(-9px -11px lighten($yella, 15%));
+			@include box-shadow(9px 11px 1px lighten($sky, 7%));
+			&:hover { @include box-shadow(9px 11px 1px lighten($sky, 7%)); }
+			@media all and ( max-height: 200px ) { @include box-shadow(-2px -5px lighten($yella, 15%)); @include box-shadow(2px 5px 1px lighten($sky, 7%)); padding:0 0.3em; }
+		}
+		h1 { 
+			@include animation(header 1277ms 500ms 2);
+			color:#fff; 
+			background-color:$purp; 
+			font-size:6.9em; 
+			padding-top:1em; 
+			@include box-shadow(9px 11px 1px lighten($teal, 11%)); 
+			&:hover { color:$sky; }
+			@media all and ( max-height: 200px ) { font-size:1.7em; background-color:saturate($yella, 77%); color:$purp; padding-left:0.7em; }
+		}
+		h2 {
+			@include animation(header 977ms 750ms 2);
+			color:$teal;
+			background-color:saturate($yella, 77%);
+			font-size:7.3em;
+			padding-bottom:.36em;
+			@include box-shadow(9px 11px 1px lighten($pink, 11%));
+			&:hover { color:$purp; }
+			@media all and ( max-height: 200px ) { font-size:1.9em;  background-color:lighten($teal, 17%);  color:#fff; }
+		}
+		h3 {
+			@include animation(header 777ms 1000ms 2);
+			color:lighten($pink, 13%);
+			background-color:lighten($teal, 17%);
+			font-size:5.3em;
+			padding-right:30%;
+			@include box-shadow(9px 11px 1px lighten($yella, 11%)); 
+			&:hover { color:#fff; }
+			@media all and ( max-height: 200px ) { font-size:1.5em; background-color:$purp; color:$sky; padding-left:0.7em; }
+		}
+	}
+	p {
+		position:absolute;
+		top:0;
+		right:0;
+		width:25%;
+		@include marker(4);
+		@include border-radius(0.9em);
+		@include box-shadow(-0.5em -0.5em lighten($pink, 17%));
+		background-color:lighten($pink, 19%);
+		font-size:1.3em;
+		color:$purp;
+		padding:0.5em;
+		margin:2.2em;
+		text-align:center;
+		@media all and ( max-height: 200px ) {
+			a { display: none; }
+		}
+	}
+	a {
+		color:darken($purp, 31%);
+		font-size:1.9em;
+		text-decoration:none;
+		&:hover { color:darken($purp, 31%); @include animation(in-a-band 833ms 1); }
+	}
+}
 
-  @mixin marker ( $which ) {
-    @if $which == 1 {
-      font-family: 'Give You Glory', cursive;
-    } @else if $which == 2 {
-      font-family: 'Gochi Hand', cursive;
-    } @else if $which == 3 {
-      font-family: 'Shadows Into Light Two', cursive;
-    } @else if $which == 4 {
-      font-family: 'Days One', sans-serif;
-    }
-  }
-  
-  $width: 89.34%;
+body > div {
+	z-index:1;
+	ul {
+		position:absolute;
+		top:0;
+		display:table;
+		width:100%;
+		height:100%;
+	}
+	li {
+		display:table-cell;
+		vertical-align:middle;
+		width:50%;
+		text-align:center;
+		font-size:100%;
+		&.right-track { right:0;
+			button:hover { @include rotate(2deg); }
+		}
+		button {
+			display:block;
+			width:2.5em;
+			margin:auto;
+			overflow:visible;
+			text-align:center;
+			outline:0;
+			padding:0;
+			border:0;
+			background:transparent;
+			@include outline;
+			@include text-shadow(0.02em 0.02em 0.15em $teal);
+			font-size:6.5em;
+			color:#999;
+			@media all and ( max-height: 200px ) { display:inline; font-size:1.5em; }
+			&:first-child { color:#222; font-size:7em;
+				@include text-shadow(0.02em 0.02em 0.15em $purp);
+				@media all and ( max-height: 200px ) { color:#222; font-size:1.5em;
+					@include text-shadow(0.02em 0.02em 0.15em $purp);
+				}
+			}
+			&.hover { @include sketch; @include rotate(-2deg); }
+			&.active { color:darken($teal, 15%); }
+		}
+	}
+}
 
-  $lime: #c3ff94;
-  $teal: #2cb2b8;
-  $purp: #954ada;
-  $pink: #ff94f6;
-  $yella: #f6ff94;
-  $sky: #c3d6ff;
-  $bg: #e8feff;
-  $coral: #f16565;
-  
-  @mixin animation ( $params ) {
-    -webkit-animation:$params;
-    -moz-animation:$params;
-    animation:$params;
-  }
-  
-  @-webkit-keyframes header {
-  	27% { @include box-shadow(9px 11px 1px lighten($teal, 41%)); }
-  	77% { @include box-shadow(9px 11px 1px lighten($sky, 11%)); }
-  }
-  @-moz-keyframes header {
-  	27% { @include box-shadow(9px 11px 1px lighten($teal, 41%)); }
-  	77% { @include box-shadow(9px 11px 1px lighten($sky, 11%)); }
-  }
-  @keyframes header {
-  	27% { @include box-shadow(9px 11px 1px lighten($teal, 41%)); }
-  	77% { @include box-shadow(9px 11px 1px lighten($sky, 11%)); }
-  }
-  
-  @-webkit-keyframes in-a-band {
-  	27% { @include text-shadow(1px 0px 4px darken($purp, 7%)); }
-  	57% { @include text-shadow(-1px 1px 4px darken($sky, 13%)); }
-  }
-  @-moz-keyframes in-a-band {
-  	27% { @include text-shadow(1px 0px 4px darken($purp, 7%)); }
-  	57% { @include text-shadow(-1px 1px 4px darken($sky, 13%)); }
-  }
-  @keyframes in-a-band {
-  	27% { @include text-shadow(1px 0px 4px darken($purp, 7%)); }
-  	57% { @include text-shadow(-1px 1px 4px darken($sky, 13%)); }
-  }
+footer {
+	.comp {
+		position:absolute;
+		width:100%;
+		padding-top:4em;
+		background:lighten($teal, 25%);
+		@include opacity(.91);
+		border-top:7em solid lighten($teal, 37%);
+		bottom:0;
+		@media all and ( max-height: 200px ) { padding-top:0em !important; }
+		ul {
+			width:100%;
+			position:absolute;
+			bottom:4em;
+			border-bottom:2em solid lighten($teal, 31%);
+		}
+		li {
+			position:absolute;
+			@include box-sizing('border-box');
+			padding:2em;
+			width:50%;
+			bottom:0;
+			&.right { right: 0; }
+			@media all and ( max-height: 200px ) { bottom:-4em !important; }
+		}
+		figcaption {
+			@include border-radius(0.1em);
+			@include marker(1);
+			background-color:#fff;
+			color:#222;
+			border-top:0.7em solid lighten($pink, 13%);
+			padding:0.8em;
+			font-size:2em;
+			cursor:pointer;
+			@include rotate(-2deg);
+			@include transition(all 203ms ease-in-out, background-color 97ms ease-in-out, margin-top 709ms ease-in, box-shadow 88ms ease-out);
+			&:hover { font-size:3em;
+				@include box-shadow(-0.5em 0.5em darken($sky, 6%));
+				@media all and ( max-height: 200px ) { font-size:1.3em !important; }
+			}
+			&:active { margin-top:10em;
+				@include transform3d( rotate(-4deg) );
+				@include transform-origin( right, top );
+			}
+			@media all and ( max-height: 200px ) { font-size:1em !important; }
+		}
+		li.right figcaption {
+			border-color:$sky;
+			@include marker(2);
+			@include rotate(1deg);
+			text-align:right;
+			&:hover { @include box-shadow(0.5em 0.5em lighten($pink, 7%));  }
+			&:active { @include transform3d( rotate(4deg) ); @include transform-origin( left, top ); }
+		}
+	}
+}
 
-  body { 
-    width:100%;
-    height:100%;
-    position:absolute;
-    top:0;
-    left:0;
-    @include background-image(
-      /* radial-gradient(center center, color-stops( lighten($sky, 33%) 11%, lighten($sky, 21%) 31%, $sky 91%) ), */
-      image-url('bg.png')
-    );
-    cursor:default;
-    overflow:hidden;
-  }
-
-  header, hgroup, h1, h2, h3, body > header > p { @include transition(all 277ms ease-in-out); }
-
-  body > header {
-    position:relative;
-    z-index:2;
-    @include chau;
-    @include opacity(0.87);
-    hgroup {
-      width:$width;
-      word-spacing:-0.3em;
-      margin:1.5em 0 0 -0.4em;
-      @include rotate(-2deg);
-      h1, h2, h3 {
-        display:inline;
-        padding:0.2em;
-        @include border-radius(0.1em);
-        @include box-shadow(-9px -11px lighten($yella, 15%));
-        @include box-shadow(9px 11px 1px lighten($sky, 7%));
-      }
-      h1 { @include animation(header 1277ms 500ms 2);
-        color:#fff; background-color:$purp; font-size:6.9em; padding-top:1em; @include box-shadow(9px 11px 1px lighten($teal, 11%)); 
-      }
-        h1:hover, h2:hover, h3:hover {
-          @include box-shadow(9px 11px 1px lighten($sky, 7%));
-        }
-        h1:hover { color:$sky; }
-      h2 { @include animation(header 977ms 750ms 2);
-        color:$teal; background-color:saturate($yella, 77%); font-size:7.3em; padding-bottom:.36em; @include box-shadow(9px 11px 1px lighten($pink, 11%)); 
-      }
-        h2:hover { color:$purp; }
-      h3 { @include animation(header 777ms 1000ms 2);
-        color:lighten($pink, 13%); background-color:lighten($teal, 17%); font-size:5.3em; padding-right:30%; @include box-shadow(9px 11px 1px lighten($yella, 11%)); 
-      }
-        h3:hover { color:#fff; }
-    }
-    p {
-      position:absolute;
-      top:0;
-      right:0;
-      width:25%;
-      @include marker(4);
-      @include border-radius(0.9em);
-      @include box-shadow(-0.5em -0.5em lighten($pink, 17%));
-      background-color:lighten($pink, 19%);
-      font-size:1.3em;
-      color:$purp;
-      padding:0.5em;
-      margin:2.2em;
-      text-align:center;
-    }
-    a {
-      color:darken($purp, 31%);
-      font-size:1.9em;
-      text-decoration:none;
-      &:hover {
-        color:darken($purp, 31%);
-        @include animation(in-a-band 833ms 1);
-      }
-    }
-  }
-  
-  body > div {
-    z-index:1;
-    ul {
-      position:absolute;
-      top:0;
-      display:table;
-      width:100%;
-      height:100%;
-    }
-      li {
-        display:table-cell;
-        vertical-align:middle;
-        width:50%;
-        text-align:center;
-        font-size:100%;
-      }
-      li.right-track {
-        right:0;
-      }
-        li button {
-          display:block;
-          width:2.5em;
-          margin:auto;
-          overflow:visible;
-          text-align:center;
-          outline:0;
-          padding:0;
-          border:0;
-          background:transparent;
-          @include outline;
-          @include text-shadow(0.02em 0.02em 0.15em $teal);
-          font-size:6.5em;
-          color:#999;
-        }
-        li button:first-child {
-          color:#222;
-          font-size:7em;
-          @include text-shadow(0.02em 0.02em 0.15em $purp);
-        }
-          li button:hover {
-            @include sketch;
-            @include rotate(-2deg);
-          }
-          li.right-track button:hover {
-            @include rotate(2deg);
-          }
-          li button:active {
-            color:darken($teal, 15%);
-          }
-  }
-
-  footer {
-    .comp {
-      position:absolute;
-      width:100%;
-      padding-top:4em;
-      background:lighten($teal, 25%);
-      @include opacity(.91);
-      border-top:7em solid lighten($teal, 37%);
-      bottom:0;
-      ul {
-        width:100%;
-        position:absolute;
-        bottom:4em;
-        border-bottom:2em solid lighten($teal, 31%);
-      }
-        li {
-          position:absolute;
-          @include box-sizing('border-box');
-          padding:2em;
-          width:50%;
-          bottom:0;
-        }
-        li.right {
-          right:0;
-        }
-          figcaption {
-            @include border-radius(0.1em);
-            @include marker(1);
-            background-color:#fff;
-            color:#222;
-            border-top:0.7em solid lighten($pink, 13%);
-            padding:0.8em;
-            font-size:2em;
-            cursor:pointer;
-            @include rotate(-2deg);
-            @include transition(all 203ms ease-in-out, background-color 97ms ease-in-out, margin-top 709ms ease-in, box-shadow 88ms ease-out);
-          }
-          li.right figcaption {
-            border-color:$sky;
-            @include marker(2);
-            @include rotate(1deg);
-            text-align:right;
-          }
-            figcaption:hover {
-              @include box-shadow(-0.5em 0.5em darken($sky, 6%));
-              font-size:3em;
-            }
-            li.right figcaption:hover {
-              @include box-shadow(0.5em 0.5em lighten($pink, 7%)); 
-            }
-            figcaption:active {
-              @include transform3d( rotate(-4deg) );
-              @include transform-origin( right, top );
-              margin-top:10em;
-            }
-            li.right figcaption:active {
-              @include transform3d( rotate(4deg) );
-              @include transform-origin( left, top );
-            }
-    }
-  }
-  
   @media all and ( max-width: 680px ) {
     body > header {
       hgroup {
@@ -378,42 +297,5 @@ td { vertical-align: top; }
         li { padding:1em !important; }
         figcaption { font-size:1.3em !important; }
           figcaption:hover { font-size:1.9em !important; }
-    }
-  }
-  
-  @media all and ( max-height: 200px ) {
-    body > header {
-      p {
-        a { display:none; }
-      }
-      hgroup {
-        position:absolute;
-        top:-1.3em;
-        h1, h2, h3 {
-          @include box-shadow(-2px -5px lighten($yella, 15%));
-          @include box-shadow(2px 5px 1px lighten($sky, 7%));
-          padding:0 0.3em;
-        }
-        h1 { font-size:1.7em; background-color:saturate($yella, 77%); color:$purp; padding-left:0.7em; }
-        h2 { font-size:1.9em; background-color:lighten($teal, 17%); color:#fff; }
-        h3 { font-size:1.5em; background-color:$purp; color:$sky; padding-left:0.7em; }
-      }
-    }
-    body > div {
-      li button {
-        display:inline;
-        font-size:1.5em;
-      }
-      li button:first-child {
-        color:#222;
-        font-size:1.5em;
-        @include text-shadow(0.02em 0.02em 0.15em $purp);
-      }
-    }
-    .comp {
-      padding-top:0em !important;
-      li { bottom:-4em !important; }
-        figcaption { font-size:1em !important; }
-          figcaption:hover { font-size:1.3em !important; }
     }
   }
